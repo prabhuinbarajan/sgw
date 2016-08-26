@@ -1,3 +1,7 @@
 #!/bin/bash
-docker rm -f  letsencrypt-apache-ubuntu-v1
-docker run -d --name letsencrypt-apache-ubuntu-v1 -p 443:443 -p 80:80 gcr.io/qubeship/letsencrypt-apache-ubuntu
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR/..
+app_name=`cat qube.json | jq .name | sed 's/\"//g'`
+instance_name=${app_name}-v1
+docker rm -f  ${instance_name}
+docker run -d --name dmz-v1 -p 443:443 -p 80:80 gcr.io/qubeship/${app_name}

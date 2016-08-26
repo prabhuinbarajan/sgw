@@ -3,5 +3,6 @@
 	"ns": "production",
     "skipBuild": "true",
     "skipTest": "true",
+    "name": "dmz",
     "keys_loc": "conf/"
 }
