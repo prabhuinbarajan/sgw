@@ -1,0 +1,7 @@
+{
+	"cloud_project": "qubeship",
+	"ns": "production",
+    "skipBuild": "true",
+    "skipTest": "true",
+    "keys_loc": "conf/"
+}
