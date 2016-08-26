@@ -1,8 +1,15 @@
 {
-	"cloud_project": "qubeship",
-	"ns": "production",
+    "cloud_project": "qubeship",
+    "ns": "production",
     "skipBuild": "true",
     "skipTest": "true",
     "name": "dmz",
-    "keys_loc": "conf/"
+    "keys_loc": "conf/",
+    "deployment" : {
+    	"mode":  "qubeship",
+    	"environments" : {
+    		"qa" : "qa" ,
+    		"prod" : "production"
+    	}
+    }
 }
