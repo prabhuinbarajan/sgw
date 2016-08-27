@@ -1,8 +1,9 @@
 name: sgw
-cloud_project: qubeship
-ns: production
 build: 
  skip: true
+bake:
+ skip: true
+ registry_prefix: gcr.io/qubeship
 test: 
  skip: true
  functional: 
