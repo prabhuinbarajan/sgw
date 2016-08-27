@@ -17,9 +17,9 @@ deployment:
    namespace: qa
    provider: gce
    id: ""
-   deploy_type: qubeship
+   deploy_type: qube
   prod: 
    namespace: production
    provider: gce
    id: ""
-   deploy_type: qubeship
+   deploy_type: qube
