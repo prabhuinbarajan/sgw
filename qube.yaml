@@ -2,12 +2,12 @@ name: sgw
 build: 
  skip: true
 bake:
- skip: true
+ #skip: false is default
  registry_prefix: gcr.io/qubeship
 test: 
  skip: true
  functional: 
-  provider: saucelabs
+ provider: saucelabs
 security: 
  overlay: true
  keys_loc: "conf/"
