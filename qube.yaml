@@ -2,6 +2,7 @@ name: sgw
 build: 
  skip: true
 bake:
+ skip: true
  registry_prefix: gcr.io/qubeship
 test: 
  skip: true
