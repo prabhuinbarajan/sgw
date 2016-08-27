@@ -1,0 +1,24 @@
+name: sgw
+cloud_project: qubeship
+ns: production
+build: 
+ skip: true
+test: 
+ skip: true
+ functional: 
+  provider: saucelabs
+security: 
+ overlay: true
+ keys_loc: "conf/"
+deployment: 
+ environments: 
+  qa: 
+   namespace: qa
+   provider: gce
+   id: ""
+   deploy_type: qubeship
+  prod: 
+   namespace: production
+   provider: gce
+   id: ""
+   deploy_type: qubeship

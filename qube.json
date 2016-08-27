@@ -1,15 +1,37 @@
 {
+    "name": "sgw",
     "cloud_project": "qubeship",
     "ns": "production",
-    "skipBuild": "true",
-    "skipTest": "true",
-    "name": "dmz",
-    "keys_loc": "conf/",
+ 
+    "build": {
+        "skip":"true"
+    },
+
+    "test" : {
+        "skip" : "true",
+        "functional" : {
+            "provider" : "saucelabs"
+        }
+
+    }, 
+    "security" : {
+        "overlay" : "true",
+        "keys_loc": "conf/"
+    },
     "deployment" : {
-    	"mode":  "qubeship",
-    	"environments" : {
-    		"qa" : "qa" ,
-    		"prod" : "production"
-    	}
+        "environments" : {
+            "qa" : {
+                "namespace" : "qa",
+                "provider" : "gce",
+                "id" : "",
+                "deploy_type" : "qubeship"
+            } ,
+            "prod" : {
+                "namespace" : "production",
+                "provider" : "gce",
+                "id" : "",
+                "deploy_type" : "qubeship"
+            } 
+        }
     }
 }
