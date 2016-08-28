@@ -22,7 +22,7 @@
         "keys_loc": "conf/"
     },
     "deployment" : {
-        "mode" : "continuous_deployment",
+        "continuous_deployment" : "true",
         "environments" : {
             "qa" : {
                 "namespace" : "qa",

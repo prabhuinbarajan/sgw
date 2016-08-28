@@ -13,7 +13,7 @@ security:
  overlay: true
  keys_loc: "conf/"
 deployment: 
- mode: continuous_deployment #continuous_delivery will ask for approval
+ continuous_deployment: true #false will make it continuous_delivery and will ask for approval, which is default
  environments: 
   qa: 
    namespace: qa
