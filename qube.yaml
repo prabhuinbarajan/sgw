@@ -13,6 +13,7 @@ security:
  overlay: true
  keys_loc: "conf/"
 deployment: 
+ mode: continuous_deployment #continuous_delivery will ask for approval
  environments: 
   qa: 
    namespace: qa
