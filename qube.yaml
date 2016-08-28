@@ -4,6 +4,7 @@ build:
 bake:
  #skip: false is default
  registry_prefix: gcr.io/qubeship
+ registry_type: gcr
 test: 
  skip: true
  functional: 
@@ -15,11 +16,13 @@ deployment:
  environments: 
   qa: 
    namespace: qa
-   provider: gce
-   id: ""
-   deploy_type: qube
+   provider: k8s
+   id: "qube_qa" #cluster id
+   type: qubeship_managed
+   template_id: qube_external_app_v1
   prod: 
    namespace: production
-   provider: gce
-   id: ""
-   deploy_type: qube
+   provider: k8s
+   id: "qube-1-1"  #cluster id
+   type: qubeship_managed  #qubeship managed, custom is customer managed
+   template_id: qube_external_app_v1

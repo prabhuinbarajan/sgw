@@ -6,7 +6,8 @@
     },
     "bake" : {
         "skip": "true",
-        "registry_prefix" :  "gcr.io/qubeship"
+        "registry_prefix" :  "gcr.io/qubeship",
+        "registry_type" : "gcr"
     },
 
     "test" : {
@@ -24,15 +25,18 @@
         "environments" : {
             "qa" : {
                 "namespace" : "qa",
-                "provider" : "gce",
+                "provider" : "k8s",
                 "id" : "",
-                "deploy_type" : "qube"
+                "type" : "qubeship_managed",
+                "template_id": "qube_internal_app_v1"
+
             } ,
             "prod" : {
                 "namespace" : "production",
-                "provider" : "gce",
+                "provider" : "k8s",
                 "id" : "",
-                "deploy_type" : "qube"
+                "type" : "qubeship_managed",
+                "template_id": "qube_internal_app_v1"
             } 
         }
     }
