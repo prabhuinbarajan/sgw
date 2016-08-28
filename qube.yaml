@@ -8,7 +8,7 @@ bake:
 test: 
  skip: true
  functional: 
- provider: saucelabs
+  provider: saucelabs
 security: 
  overlay: true
  keys_loc: "conf/"
