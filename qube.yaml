@@ -1,29 +1,33 @@
 name: sgw
 build: 
  skip: true
-bake:
- #skip: false is default
- registry_prefix: gcr.io/qubeship
- registry_type: gcr
-test: 
- skip: true
- functional: 
-  provider: saucelabs
 security: 
  overlay: true
  keys_loc: "conf/"
+bake:
+  strategy: docker
+  script: scripts/bake/Dockerfile
+  repositories:
+    - name: google
+      prefix: gcr.io/qubeship
+      type: gcr
+test: 
+ skip: true
+ functional: 
+  provider: qubeship-sg
+
 deployment: 
  continuous_deployment: true #false will make it continuous_delivery and will ask for approval, which is default
- environments: 
-  qa: 
-   namespace: qa
-   provider: k8s
-   id: "qube_qa" #cluster id
-   type: qubeship_managed
-   template_id: qube_external_app_v1
-  prod: 
-   namespace: production
-   provider: k8s
-   id: "qube-1-1"  #cluster id
-   type: qubeship_managed  #qubeship managed, custom is customer managed
-   template_id: qube_external_app_v1
+ environments:
+    qa: 
+      - namespace: qa
+        provider: cloudfoundry
+        id: "cf1" # Cloud Foundry space
+        type: qubeship_managed
+        template_id: qube_external_app_v1
+        srcRepo: none
+    prod:
+      - type: qubeship_managed
+        id: "k8s1"
+        template_id: qube_external_app_v1
+        srcRepo: google
