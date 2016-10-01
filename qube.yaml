@@ -15,17 +15,9 @@ test:
  skip: true
  functional: 
   provider: qubeship-sg
-
 deployment: 
  continuous_deployment: true #false will make it continuous_delivery and will ask for approval, which is default
  environments:
-    qa: 
-      - namespace: qa
-        provider: cloudfoundry
-        id: "cf1" # Cloud Foundry space
-        type: qubeship_managed
-        template_id: qube_external_app_v1
-        srcRepo: none
     prod:
       - type: qubeship_managed
         id: "k8s1"
