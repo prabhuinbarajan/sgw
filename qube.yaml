@@ -18,6 +18,7 @@ test:
 deployment: 
  continuous_deployment: true #false will make it continuous_delivery and will ask for approval, which is default
  environments:
+    qa:
     prod:
       - type: qubeship_managed
         id: "k8s1"
