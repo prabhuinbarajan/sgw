@@ -23,3 +23,7 @@ deployment:
         id: "k8s2"
         template_id: qube_external_app_v1
         srcRepo: google
+notification:
+  server: slack
+  domain: qubeship
+  channel: qubeship
