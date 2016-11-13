@@ -55,6 +55,6 @@ After finishing stop the forward-containers
 ### Push / Read Certs
 We use the Vault as the secret storage.
 * to write certs:  
-``for file in `ls`; do vault write secret/resources/qubeship/certs/$file value=@${file} ; done}}}``
+``for file in `ls`; do vault write secret/resources/qubeship/certs/$file value=@${file} ; done``
 * to read certs:  
-``for key in `vault list secret/resources/qubeship/certs | grep -v Keys | grep -v \-`; do vault read -field=value secret/resources/qubeship/certs/$key > $key; done}}}``
+``for key in `vault list secret/resources/qubeship/certs | grep -v Keys | grep -v \-`; do vault read -field=value secret/resources/qubeship/certs/$key > $key; done``
