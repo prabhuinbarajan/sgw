@@ -62,21 +62,12 @@ We use the Vault as the secret storage.
 ``for file in `ls`; do vault write secret/resources/qubeship/certs/$file value=@${file} ; done``
 * to read certs:  
 
-`export VAULT_TOKEN = vault master token  `
-`export VAULT_ADDRESS=internal vault service address  `
-`#cd /etc/letsencrypt/keys  `
-`cd /etc/letsencrypt/live/api-admin.qubeship.io/`
-`for key in `vault list secret/resources/qubeship/certs | grep -v Keys | grep -v \-`; do vault read -field=value` `secret/resources/qubeship/certs/$key > $key; done  `
+`export VAULT_TOKEN = vault master token`  
+`export VAULT_ADDRESS=internal vault service address`  
+`#cd /etc/letsencrypt/keys`  
+`cd /etc/letsencrypt/live/api-admin.qubeship.io/`  
+`for key in `vault list secret/resources/qubeship/certs | grep -v Keys | grep -v \-`; do vault read -field=value`   `secret/resources/qubeship/certs/$key > $key; done`  
 
 ### occasional problems
-flushing dns cache : https://developers.google.com/speed/public-dns/cache  
-apache settings on mods-enabled/mpm_event.conf
-        ServerLimit          200
-        StartServers                     3
-        MinSpareThreads          75
-        MaxSpareThreads          250
-        MaxClients               5000
-        ThreadLimit                      64
-        ThreadsPerChild          25
-        MaxRequestWorkers         5000
-        MaxConnectionsPerChild   5000
+flushing dns cache : https://developers.google.com/speed/public-dns/cache   
+
