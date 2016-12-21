@@ -57,16 +57,25 @@ After finishing stop the forward-containers
 ``  
 
 ### Push / Read Certs  
-We use the Vault as the secret storage.
-* to write certs:  
-``for file in `ls`; do vault write secret/resources/qubeship/certs/$file value=@${file} ; done``
-* to read certs:  
-
+We use the Vault as the secret storage.  Initialize vault :   
 `export VAULT_TOKEN = vault master token`  
 `export VAULT_ADDRESS=internal vault service address`  
-`#cd /etc/letsencrypt/keys`  
+
+* to write certs from super gateway:  
+`cd /etc/letsencrypt/live/api-admin.qubeship.io/`  
+`for file in `ls`; do vault write secret/resources/qubeship/certs/$file value=@${file} ; done`  
+
+* to read certs:  
+
+in the super gateway:
 `cd /etc/letsencrypt/live/api-admin.qubeship.io/`  
 `for key in `vault list secret/resources/qubeship/certs | grep -v Keys | grep -v \-`; do vault read -field=value secret/resources/qubeship/certs/$key > $key; done`  
+
+in the gateway:
+
+`mkdir -p /tmp/keys; cd /tmp/keys; for key in `vault list secret/resources/qubeship/certs | grep -v Keys | grep -v \-`; do vault read -field=value secret/resources/qubeship/certs/$key > $key; done; cp privkey.pem /etc/ssl/qube.key; cp fullchain.pem /etc/ssl/0001_chain.pem; cd /tmp; rm -rf /tmp/keys; `  
+`export API_UMBRELLA_PERP_BASE=/opt/api-umbrella/etc/perp`    
+`/opt/api-umbrella/embedded/sbin/perpctl -b "$API_UMBRELLA_PERP_BASE" hup nginx`  
 
 ### occasional problems
 flushing dns cache : https://developers.google.com/speed/public-dns/cache   
