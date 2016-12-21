@@ -17,6 +17,7 @@ RUN a2ensite default-ssl
 RUN a2enmod ssl
 RUN a2enmod proxy
 RUN a2enmod proxy_http
+RUN a2enmod proxy_wstunnel
 RUN a2enconf le
 RUN mkdir -p /var/www/html/.well-known/acme-challenge
 RUN chgrp -R www-data /var/www/html/.well-known && chmod -R g+s /var/www/html/.well-known
