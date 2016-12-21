@@ -21,7 +21,7 @@ deployment:
     prod:
       - type: qubeship_managed
         id: "k8s2"
-        template_id: qube_external_app_v1
+        template_id: qube_external_app_lb_v1
         srcRepo: google
 notification:
   type: slack
