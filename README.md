@@ -76,6 +76,7 @@ in the gateway:
 `mkdir -p /tmp/keys; cd /tmp/keys; for key in ``vault list secret/resources/qubeship/certs | grep -v Keys | grep -v \-``; do vault read -field=value secret/resources/qubeship/certs/$key > $key; done; cp privkey.pem /etc/ssl/qube.key; cp fullchain.pem /etc/ssl/0001_chain.pem; cd /tmp; rm -rf /tmp/keys; `  
 `export API_UMBRELLA_PERP_BASE=/opt/api-umbrella/etc/perp`    
 `/opt/api-umbrella/embedded/sbin/perpctl -b "$API_UMBRELLA_PERP_BASE" hup nginx`  
+'/etc/init.d/api-umbrella reload'
 
 ### occasional problems
 flushing dns cache : https://developers.google.com/speed/public-dns/cache   
