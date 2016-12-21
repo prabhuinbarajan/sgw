@@ -70,3 +70,13 @@ for key in `vault list secret/resources/qubeship/certs | grep -v Keys | grep -v 
 
 ### occasional problems
 flushing dns cache : https://developers.google.com/speed/public-dns/cache  
+apache settings on mods-enabled/mpm_event.conf
+        ServerLimit          200
+        StartServers                     3
+        MinSpareThreads          75
+        MaxSpareThreads          250
+        MaxClients               5000
+        ThreadLimit                      64
+        ThreadsPerChild          25
+        MaxRequestWorkers         5000
+        MaxConnectionsPerChild   5000
