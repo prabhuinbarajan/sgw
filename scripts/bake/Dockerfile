@@ -24,11 +24,20 @@ RUN a2enmod ssl
 RUN a2enmod proxy
 RUN a2enmod proxy_http
 RUN a2enmod proxy_wstunnel
+RUN a2enmod mpm_prefork
+RUN a2dismod mpm_event
 RUN a2enconf le
 RUN mkdir -p /var/www/html/.well-known/acme-challenge
 RUN chgrp -R www-data /var/www/html/.well-known && chmod -R g+s /var/www/html/.well-known
-RUN apache2ctl -D BACKGROUND
 
+# Install Forego
+ADD https://github.com/jwilder/forego/releases/download/v0.16.1/forego /usr/local/bin/forego
+RUN chmod u+x /usr/local/bin/forego
+
+RUN apache2ctl -D BACKGROUND
+ADD docker-entrypoint.sh /
 EXPOSE 80 443
 
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+# CMD ["apache2ctl", "-D", "FOREGROUND"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["forego", "start", "-r"]
