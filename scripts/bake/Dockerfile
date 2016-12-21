@@ -31,6 +31,7 @@ RUN mkdir -p /var/www/html/.well-known/acme-challenge
 RUN chgrp -R www-data /var/www/html/.well-known && chmod -R g+s /var/www/html/.well-known
 
 # Install Forego
+ADD Procfile /
 ADD https://github.com/jwilder/forego/releases/download/v0.16.1/forego /usr/local/bin/forego
 RUN chmod u+x /usr/local/bin/forego
 
