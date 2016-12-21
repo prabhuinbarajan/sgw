@@ -31,14 +31,14 @@ RUN mkdir -p /var/www/html/.well-known/acme-challenge
 RUN chgrp -R www-data /var/www/html/.well-known && chmod -R g+s /var/www/html/.well-known
 
 # Install Forego
-ADD Procfile /
+ADD Procfile .
 ADD https://github.com/jwilder/forego/releases/download/v0.16.1/forego /usr/local/bin/forego
 RUN chmod u+x /usr/local/bin/forego
 
 RUN apache2ctl -D BACKGROUND
-ADD docker-entrypoint.sh /
+ADD docker-entrypoint.sh .
 EXPOSE 80 443
 
 # CMD ["apache2ctl", "-D", "FOREGROUND"]
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/data/docker-entrypoint.sh"]
 CMD ["forego", "start", "-r"]
