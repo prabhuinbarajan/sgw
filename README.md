@@ -51,6 +51,10 @@ Now go on with the steps at "Install the https certificate".
 
 After finishing stop the forward-containers  
 `docker stop forward80 && docker rm forward80 && docker stop forward443 && docker rm forward443`  
+### generate certs
+
+``` /data/letsencrypt/letsencrypt-auto --apache --email admin@qubeship.io --domains api-admin.qubeship.io,api-registry.qubeship.io,api.qubeship.io,app.qubeship.io,builder.qubeship.io,consul.qubeship.io,gateway.qubeship.io,jenkins.qubeship.io,listener.qubeship.io,platform.qubeship.io,qubeship.com,qubeship.io,sg.qubeship.io,try.qubeship.io,vault.qubeship.io,www.qubeship.com,www.qubeship.io,northerntrust.listener.qubeship.io,northerntrust.receiver.qubeship.io,northerntrust.app.qubeship.io,northerntrust.builder.qubeship.io,northerntrust.api-registry.qubeship.io,ca.listener.qubeship.io,ca.receiver.qubeship.io,ca.app.qubeship.io,ca.builder.qubeship.io,ca.api-registry.qubeship.io
+```
 
 ### Push / Read Certs
 We use the Vault as the secret storage.
