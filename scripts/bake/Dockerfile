@@ -5,8 +5,14 @@ WORKDIR /data
 
 RUN apt-get update && apt-get install -y \
         apache2 \
-        git
+        git \
+        unzip \
+        wget \
+        dnsutils
 
+RUN wget https://releases.hashicorp.com/vault/0.6.4/vault_0.6.4_linux_amd64.zip && \
+    unzip vault_0.6.4_linux_amd64 && \
+    mv vault /usr/local/bin
 RUN echo "" > /var/www/html/index.html
 RUN git clone https://github.com/letsencrypt/letsencrypt
 RUN /data/letsencrypt/letsencrypt-auto --help
