@@ -62,10 +62,10 @@ We use the Vault as the secret storage.
 ``for file in `ls`; do vault write secret/resources/qubeship/certs/$file value=@${file} ; done``
 * to read certs:  
 ``
-export VAULT_TOKEN = vault master token
-export VAULT_ADDRESS=internal vault service address
-cd /etc/letsencrypt/keys
-for key in `vault list secret/resources/qubeship/certs | grep -v Keys | grep -v \-`; do vault read -field=value secret/resources/qubeship/certs/$key > $key; done
+export VAULT_TOKEN = vault master token  
+export VAULT_ADDRESS=internal vault service address  
+cd /etc/letsencrypt/keys  
+for key in `vault list secret/resources/qubeship/certs | grep -v Keys | grep -v \-`; do vault read -field=value secret/resources/qubeship/certs/$key > $key; done  
 ``
 
 ### occasional problems
